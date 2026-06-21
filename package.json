@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node -e \"require('fs').writeFileSync('public/build_time.txt', Date.now().toString())\"",
     "build": "next build",
+    "predev": "node -e \"require('fs').writeFileSync('public/build_time.txt', Date.now().toString())\"",
     "start": "next start",
     "lint": "eslint",
     "prepare": "husky"
