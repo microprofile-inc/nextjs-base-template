@@ -10,7 +10,17 @@ export function SiteFooter() {
         <p>
           © {year} {siteConfig.name}. 保留所有权利。
         </p>
-        <p>基于 Next.js 构建</p>
+        <p>
+          技术支持{" "}
+          <a
+            href="https://typemake.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-foreground transition-colors hover:text-primary"
+          >
+            typemake.com
+          </a>
+        </p>
       </Container>
     </footer>
   )

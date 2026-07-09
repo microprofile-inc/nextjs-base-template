@@ -91,8 +91,8 @@ className={cn("mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8", className)}
 
 ```ts
 export const siteConfig = {
-  name: "Next.js 基础模板",
-  description: "基于 Next.js 的基础模板，方便修改主题色与定制风格。",
+  name: "Type Make",
+  description: "Type Make — 可灵活定制主题与风格。",
   nav: [
     { href: "/", label: "首页" },
     { href: "/about", label: "关于" },
