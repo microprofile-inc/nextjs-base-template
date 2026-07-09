@@ -43,75 +43,17 @@ This project uses `output: "export"` — the entire site is generated as static 
 **Deployment:** Deploy the `out/` directory to any static hosting (GitHub Pages, Cloudflare Pages, S3+CloudFront, Nginx, etc.).
 <!-- END:static-export-rules -->
 
-<!-- BEGIN:redirect-rules -->
-# 页面跳转规则
-
-**禁止**直接使用 `window.location.href = "xxx"` 或 `window.location.replace("xxx")` 进行页面跳转。
-
-请使用 `lib/redirect.ts` 中的 `redirectTo` 工具函数：
-
-```ts
-import { redirectTo } from "@/lib/redirect"
-
-// 正确 ✅
-redirectTo("/account")
-
-// 错误 ❌
-window.location.href = "/account"
-```
-<!-- END:redirect-rules -->
-
-<!-- BEGIN:api-rules -->
-# API 对接规则
-
-**API 调用必须使用 `@/app/openapi` 中生成的客户端代码**，数据类型必须使用 `@/app/openapi` 定义的类型，严禁自定义类型。
-
-```ts
-import { WebsiteApi } from "@/app/openapi"
-import type { Website } from "@/app/openapi"
-
-// 正确 ✅
-const api = new WebsiteApi()
-const { data } = await api.websiteGet()
-// data.records: Website[]
-
-// 错误 ❌
-interface MyWebsite { ... }
-const res = await fetch("/api/website")
-```
-<!-- END:api-rules -->
-
-<!-- BEGIN:format-date-rules -->
-# 日期格式化规则
-
-**日期展示必须使用 `FormatDate` 组件**，禁止手动拼接或格式化日期字符串。
-
-```tsx
-import { FormatDate } from "@/components/format-date"
-
-// 正确 ✅
-<FormatDate date={site.whenModified} />
-
-// 错误 ❌
-<span>{site.whenModified}</span>
-<span>{new Date(site.whenModified).toLocaleDateString()}</span>
-```
-<!-- END:format-date-rules -->
-
-
 <!-- BEGIN:shadcn-rules -->
 # shadcn 组件优先规则
 
 **开发新页面时，优先使用 `components/ui/` 下的 shadcn 组件，禁止手写原生 HTML 元素替代。**
 
 可用组件清单（按需使用 `shadcn add` 安装）：
-- `Button`, `Avatar` — 已安装
-- `Accordion` — 用于 FAQ、折叠面板等（已安装）
-- 其他：Card, Dialog, Select, Input, Label, Tabs 等
+- `Button` — 已安装
+- 其他：Card, Dialog, Select, Input, Label, Tabs, Accordion, Avatar 等（按需安装）
 
 常见反模式：
 - ❌ 使用 `<details>` 实现折叠 → ✅ 使用 `<Accordion>`
-- ❌ 手动 `fetch` → 使用 `@/app/openapi` 生成的客户端
 
 **如果在 `components/ui/` 中找不到所需组件，使用以下命令安装：**
 ```
