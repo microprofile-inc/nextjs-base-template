@@ -66,6 +66,24 @@ npx shadcn@latest add @7ovr/<block名称>
 ```
 <!-- END:shadcn-rules -->
 
+<!-- BEGIN:no-form-rules -->
+# 禁止表单功能规则
+
+本项目为静态展示型模板，**禁止开发任何包含表单/输入控件的页面**。
+
+**禁止使用任何输入控件**（收集用户输入）：
+- ❌ `<input>` / `<textarea>` / `<select>` / `<Checkbox>` / `<Switch>` / `<ToggleGroup>` / `<Combobox>` / `<RadioGroup>` / `<Slider>` / `<InputOTP>` / `<Field>` / `<Form>` / `<InputGroup>`
+- ❌ 含上述控件的页面：登录/注册、联系表单、邮件订阅、搜索框、聊天输入、评论、设置表单、数据表编辑、文件上传、billing 表单等
+
+**已安装 blocks 中的禁用项**（含输入控件，勿用于页面开发）：
+`billing-block`、`blog-block`（搜索）、`careers-block`（搜索）、`dashboard-block`（筛选）、`faqs-block`（搜索）、`file-upload-block`、`gallery-block`（ToggleGroup）、`integrations-block`、`onboarding-block`、`settings-block`、`table-block`
+
+**未安装的表单类 blocks（禁止安装使用）**：
+`auth-1~8`、`contact-1~3`、`newsletter-1~5`、`chat-1~4`、`ai-chat-1~3`、`coming-soon-1~5`、`error-2`、`cta-4`、`hero-4`、`faqs-3/4`、`footer-3`、`sidebar-2`、`saas-landing`、`startup`、`saas-landing-2`、`search-1~3`
+
+**安全替代**：如需用户交互，使用非输入型控件——`Dialog`（对话框）、`Accordion`（折叠）、`Tabs`（切换）、`Popover`、`Tooltip`、`DropdownMenu` 等。
+<!-- END:no-form-rules -->
+
 <!-- BEGIN:ui-components-inventory -->
 # UI 组件清单（61 个已全部安装）
 

@@ -117,6 +117,8 @@ npx shadcn@latest add @7ovr/<block名称>
 
 以下含 `<form>` 的 blocks 未安装（需要时再装）：`auth-1~8`、`contact-1~3`、`newsletter-1~5`、`chat-1~4`、`ai-chat-1~3`、`coming-soon-1~5`、`error-2`、`cta-4`、`hero-4`、`faqs-3/4`、`footer-3`、`sidebar-2`、`saas-landing`、`startup`、`saas-landing-2`、`search-1~3` 等。
 
+> ⚠️ 本项目禁止表单功能（见 AGENTS.md `no-form-rules`）。已安装但含输入控件的 blocks（billing、blog、careers、dashboard、faqs、file-upload、gallery、integrations、onboarding、settings、table）**禁止用于页面开发**。
+
 ## 依赖约束
 
 - `table-block` 依赖 **`@tanstack/react-table@8`**（`useReactTable` API）——**禁止升级到 v9**
