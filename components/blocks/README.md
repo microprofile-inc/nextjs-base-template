@@ -77,9 +77,9 @@
 
 ```tsx
 // 任意页面（Server 或 Client 均可 import）
-import HeroBlock from "@/components/hero-block"
-import PricingBlock from "@/components/pricing-block"
-import FaqsBlock from "@/components/faqs-block"
+import HeroBlock from "@/components/blocks/hero-block"
+import PricingBlock from "@/components/blocks/pricing-block"
+import FaqsBlock from "@/components/blocks/faqs-block"
 
 export default function Page() {
   return (

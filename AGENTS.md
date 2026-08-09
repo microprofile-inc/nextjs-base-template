@@ -89,13 +89,13 @@ npx shadcn@latest add @7ovr/<block名称>
 <!-- BEGIN:blocks-inventory -->
 # Blocks 使用规范（@7ovr，46 个已安装）
 
-所有 blocks 位于 `components/*-block.tsx`，**默认导出、无 props、内容硬编码在文件顶部的数据常量中**。完整清单见 `components/README.md`。
+所有 blocks 位于 `components/blocks/*-block.tsx`，**默认导出、无 props、内容硬编码在文件顶部的数据常量中**。完整清单见 `components/blocks/README.md`。
 
 ## 使用方式
 
 ```tsx
-import HeroBlock from "@/components/hero-block"
-import FeaturesBlock from "@/components/features-block"
+import HeroBlock from "@/components/blocks/hero-block"
+import FeaturesBlock from "@/components/blocks/features-block"
 
 export default function Page() {
   return (
@@ -112,7 +112,7 @@ export default function Page() {
 
 ## 定制方式（重要）
 
-blocks **没有 props**，定制必须直接编辑源码中的**数据常量**。示例：`components/pricing-block.tsx` 顶部：
+blocks **没有 props**，定制必须直接编辑源码中的**数据常量**。示例：`blocks/pricing-block.tsx` 顶部：
 
 ```ts
 // 改这里即可定制三个套餐
