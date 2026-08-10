@@ -94,6 +94,50 @@ npx shadcn@latest add @7ovr/<block名称>
 （不得尝试实现或"变通实现"此类功能。）
 <!-- END:complex-feature-rules -->
 
+<!-- BEGIN:impeccable-flow-rules -->
+# 设计构建流程规则（impeccable）
+
+**任何设计/构建任务开始前，先检测流程状态；缺失环节时停下并补齐，不得自行跳过。**
+
+## 流程闸门（每个会话的首个设计任务必查）
+
+```bash
+node .agents/skills/impeccable/scripts/load-context.mjs
+```
+（输出 JSON：`hasProduct` / `hasDesign` / `contextDir`）
+
+| 状态 | 动作 |
+|------|------|
+| 无 `PRODUCT.md` | **停止设计**，由 agent 主动执行 teach 流程（加载 `reference/teach.md`，在对话中完成访谈），生成 PRODUCT.md 后重载上下文再继续 |
+| 有 `PRODUCT.md` 无 `DESIGN.md` | 提示一次运行 `$impeccable document`，然后继续 |
+| 两者都有 | 进入任务分类 |
+
+禁止：缺失 PRODUCT.md 时自行虚构设计；禁止把用户原始 prompt 当作 PRODUCT.md 替代品。
+
+**teach 产物（PRODUCT.md / DESIGN.md）必须随 git 提交入库**——容器每次启动会重新 clone，未提交的语境文件会丢失。
+
+## 任务分类（决定走哪条流）
+
+- **brand**（营销/落地页，设计即产品）vs **product**（应用 UI，设计服务产品）
+- 从零/首屏 → `teach` → `shape` → `craft`
+- 已有页面精修 → `polish`/`critique`，不重掷方向
+- 新增页面（已有 DESIGN.md）→ `craft` 继承已确立 world，不重新 roll
+
+## 从零构建顺序
+
+1. `teach` → 生成 PRODUCT.md（+DESIGN.md）
+2. `shape` → 出设计简报，**等用户确认**
+3. `craft <页面>` → 等用户选择视觉方向后才构建
+4. 逐页扩展 → `add <section> to <page>`
+5. 收尾 → `critique` → `polish` → `audit` + `npx impeccable detect src/`
+6. `npm run build` 验证静态导出
+
+## 硬性闸门
+
+- `craft` 前必须有用户确认的设计简报（shape 产物，teach 不算）
+- 遵守本文件其余约束块（禁表单、静态导出、shadcn 组件优先等）
+<!-- END:impeccable-flow-rules -->
+
 <!-- BEGIN:ui-components-inventory -->
 # UI 组件清单（61 个已全部安装）
 
